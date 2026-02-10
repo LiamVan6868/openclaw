@@ -1,0 +1,41 @@
+{
+  "name": "OpenClaw Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "hostRequirements": {
+    "cpus": 8,
+    "memory": "16gb",
+    "storage": "64gb"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "oxc.oxc-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "oxc.oxc-vscode",
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  },
+  "forwardPorts": [18789, 18790, 5173],
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "remoteUser": "daytona",
+  "containerEnv": {
+    "NODE_ENV": "development",
+    "OPENCLAW_PREFER_PNPM": "1"
+  }
+}
